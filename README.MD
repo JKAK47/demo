@@ -1,0 +1,1 @@
+[责任链模式实现的三种方式](https://www.cnblogs.com/lizo/p/7503862.html)
