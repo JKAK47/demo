@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<jmh.version>1.21</jmh.version>
 	</properties>
 
 	<dependencies>
@@ -23,7 +24,21 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-
+		<!-- JMH 多线程基准测试套件 TEST  BEGIN -->
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-core</artifactId>
+			<version>${jmh.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-generator-annprocess</artifactId>
+			<version>${jmh.version}</version>
+			<scope>test</scope>
+			<!--<scope>provided</scope>-->
+		</dependency>
+		<!-- JMH 多线程基准测试套件 TEST END-->
 
 
 		<dependency>
