@@ -48,9 +48,9 @@ public class FirstBenchmark {
         Options opt = new OptionsBuilder()
                 .include(FirstBenchmark.class.getSimpleName())
                 .forks(1) // fork 1 表示只有一个副本去执行benchmark测试，跟线程不一样。如果需要两个副本 fork 2即可,这个时候每个benchmark 测试方法都执行两次
-                .warmupIterations(1) // 表示 预热5次，另外还有一个默认的参数是每次预热持续时间 10s，在 10s中内不断调用benchmark 测试方法 ；然后根据模式采样测试数据; 持续时间可以通过Warmup注解time属性设置
+                .warmupIterations(5) // 表示 预热5次，每次预热持续1s ，另外还有一个默认的参数是每次预热持续时间 10s，在 10s中内不断调用benchmark 测试方法 ；然后根据模式采样测试数据; 持续时间可以通过Warmup注解time属性设置
                 .warmupTime(new TimeValue(1, TimeUnit.SECONDS)) /** 设置持续时间 */
-                .measurementIterations(1)// 表示 预热5次，另外还有一个默认的参数是每次预热持续时间 10s, 在 10s中内不断调用benchmark 测试方法 ；然后根据模式采样测试数据; 持续时间可以通过Measurement 注解time属性设置
+                .measurementIterations(5)// 表示 策略5次，每次测量周期持续2s，另外还有一个默认的参数是每次预热持续时间 10s, 在 10s中内不断调用benchmark 测试方法 ；然后根据模式采样测试数据; 持续时间可以通过Measurement 注解time属性设置
                 .measurementTime(new TimeValue(2, TimeUnit.SECONDS))
                 .build();
 

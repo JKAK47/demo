@@ -49,17 +49,22 @@ public class JMHSample_03_States {
 
      */
 
-
+    /**
+     * 每个线程共享同一个参数
+     */
     @State(Scope.Benchmark)
     public static class BenchmarkState {
-        public static  String bench="BenchmarkState";
+        public static String bench = "BenchmarkState";
         volatile double x = Math.PI;
     }
 
 
+    /**
+     * 每個线程都有 私有的  ThreadState 属性
+     */
     @State(Scope.Thread)
     public static class ThreadState {
-        public static  String bench="ThreadState";
+        public static String bench = "ThreadState";
         volatile double x = Math.PI;
     }
 
@@ -94,7 +99,7 @@ public class JMHSample_03_States {
 
         // will measure unshared case.
 
-        System.out.println(ThreadState.bench+" : " +Thread.currentThread().getName()+" : "+state.x++);
+        System.out.println(ThreadState.bench + " : " + Thread.currentThread().getName() + " : " + state.x++);
 
     }
 
@@ -105,7 +110,7 @@ public class JMHSample_03_States {
         // Since BenchmarkState is the Scope.Benchmark, all threads
         // will share the state instance, and we will end up measuring
         // shared case.
-        System.out.println(BenchmarkState.bench+" : " +Thread.currentThread().getName()+" : "+state.x++);
+        System.out.println(BenchmarkState.bench + " : " + Thread.currentThread().getName() + " : " + state.x++);
     }
 
     /*
@@ -136,7 +141,7 @@ public class JMHSample_03_States {
                 .threads(4) /** 创建四个线程测试*/
 
                 .forks(1)
-                 .output("file.txt")
+                .output("file.txt")
                 .build();
         new Runner(opt).run();
 
